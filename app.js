@@ -20,5 +20,9 @@ app.get('/404', (req, res) => {
   res.render('404')
 })
 
+app.get('/profile-new', (req, res) => {
+  res.render('profile-new')
+})
+
 app.listen(3000)
     console.log('listening on port http://localhost:3000/')
