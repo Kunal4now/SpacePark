@@ -32,7 +32,7 @@
 #banner {
     align-items: center;
     justify-content: space-between;
-    /* display: flex; */
+    display: flex;
     height: 13%;
     width: 100%;
     background-image: linear-gradient(30deg, #1E96B8, #2FB4C7);

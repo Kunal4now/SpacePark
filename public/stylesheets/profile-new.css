@@ -1,0 +1,244 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: poppins, sans-serif;
+    font-weight: 700;
+}
+
+#header {
+    background-image: linear-gradient(30deg, #1E96B8, #2FB4C7);
+    height: 20%;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+#header #logo {
+    color: white;
+    font-size: 20px;
+}
+
+#header #logo i {
+    display: none;
+}
+
+
+#header .nav-ul li a {
+    display: flex;
+    flex-direction: row;
+    font-size: 14px;
+    text-decoration: none;
+    text-align: center;
+    color: white;
+    padding: 10px;
+}
+
+#header .nav-ul {
+    list-style: none;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+#header .nav-ul li a:hover {
+    color: #6de5cc;
+}
+
+/* #header #searchbar input {
+    text-align: center;
+    border: none;
+    border-radius: 10px;
+    width: 250px;
+    height: 30%;
+} */
+
+.search-term {
+    border: 3px solid #00B4CC;
+    border-right: none;
+    padding: 15px;
+    height: 20px;
+    border-radius: 6px;
+    outline: none;
+    color: #9DBFAF;
+  }
+
+.search-button {
+    width: 40px;
+    height: 36px;
+    border: 1px solid #00B4CC;
+    background: #00B4CC;
+    text-align: center;
+    color: #fff;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 20px;
+  }
+
+
+
+/* #header #searchbar button {
+    background-color: white;
+    border: none;
+    width: 80px;
+    height: 30%;
+    border-radius: 10px;
+} */
+
+#header #searchbar input:active {
+    border: none;
+}
+
+.hamburger {
+    color: white;
+    background: transparent;
+    cursor: pointer;
+    border: none;
+    display: none;
+}
+
+.hamburger:focus {
+    outline: none;
+}
+
+#header-below {
+    background-color: rgb(231, 229, 229);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#header-below #icon-tray {
+    margin-top: -50px;
+    margin-right: 40px;
+}
+
+#header-below #icon-tray i { 
+    padding: 10px;
+    text-align: center;
+    color: white;
+    border: 3px white solid;
+    border-radius: 15px;
+}
+
+#header-below #avatar img {
+    width: 140px;
+    height: 140px;
+    margin-left: 100px;
+    margin-top: -70px;
+    border: rgb(231, 229, 229) 7px solid;
+    border-radius: 40px;
+}
+
+.main-container {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(231, 229, 229);
+}
+
+#header nav .icon {
+    display: none;
+}
+
+#header #logo .menu-btn i {
+    color: white;
+    cursor: pointer;
+    display: none;
+}
+
+
+#header-below #icon-tray i {
+    cursor: pointer;
+}
+
+#header-below #icon-tray i:hover {
+    color: #6de5cc;
+    border-color: #6de5cc;
+}
+
+footer {
+    align-items: center;
+    height: 40px;
+    background-color: #323641;
+    text-decoration: none;
+    text-align: center;
+    color: turquoise;
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+}
+
+@media screen and (max-width: 600px) {
+
+    #header {
+        width: 100%;
+        height: auto;
+        display: block;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        display: flex;
+        flex-direction: row;
+    }
+
+    #searchbar {
+        display: none;
+    }
+
+    #header .nav-ul  {
+        align-items: center;
+        display: none;
+        /* margin-left: -500px; */
+        flex-direction: column;
+        width: 100%;
+    }
+
+    #header .nav-ul.show {
+        display: flex;
+        width: 100%;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    #header, #header-below {
+        background-image: linear-gradient(30deg, #1E96B8, #2FB4C7);
+    }
+
+    #header-below {
+        border: none;
+        height: 110px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        background-image: linear-gradient(to right, #1E96B8, #2FB4C7);
+        /* height: fit-content; */
+        align-items: center;
+    }
+
+    #header-below #avatar {
+        margin-top: 100px;
+        height: 100px;
+        margin-left: 0px;
+    }
+
+    #header-below #avatar img {
+        position: fixed;
+        margin-top: 1px;
+        margin-left: 20px;
+        width: 100px;
+        height: 100px;
+    }
+
+    #header-below #icon-tray {
+        /* position: fixed; */
+        margin-top: 10px;
+    }
+  }

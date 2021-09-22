@@ -3,6 +3,7 @@ var path = require('path');
 
 var app = express();
 
+//setting the view engine to ejs
 app.set('view engine', 'ejs')
 
 //It basically tells our express app to use the public folder in the app
@@ -18,6 +19,10 @@ app.get('/profile', (req, res) => {
 
 app.get('/404', (req, res) => {
   res.render('404')
+})
+
+app.get('/profile-new', (req, res) => {
+  res.render('profile-new')
 })
 
 app.listen(3000)
