@@ -1,0 +1,218 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+Great+Primer&display=swap');
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: poppins, sans-serif;
+    font-weight: 700;
+}
+
+#header {
+    background-image: linear-gradient(30deg, #1E96B8, #2FB4C7);
+    height: fit-content;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+#header #logo {
+    color: white;
+    font-size: 20px;
+}
+
+#header #logo i {
+    display: none;
+}
+
+
+#header .nav-ul li a {
+    display: flex;
+    flex-direction: row;
+    font-size: 14px;
+    text-decoration: none;
+    text-align: center;
+    color: white;
+    padding: 10px;
+}
+
+#header .nav-ul {
+    list-style: none;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+#header .nav-ul li a:hover {
+    color: #6de5cc;
+}
+
+/* #header #searchbar input {
+    text-align: center;
+    border: none;
+    border-radius: 10px;
+    width: 250px;
+    height: 30%;
+} */
+
+.search-term {
+    border: 3px solid #00B4CC;
+    border-right: none;
+    padding: 15px;
+    height: 20px;
+    border-radius: 6px;
+    outline: none;
+    color: #9DBFAF;
+  }
+
+.search-button {
+    width: 40px;
+    height: 36px;
+    border: 1px solid #00B4CC;
+    background: #00B4CC;
+    text-align: center;
+    color: #fff;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 20px;
+  }
+
+
+
+/* #header #searchbar button {
+    background-color: white;
+    border: none;
+    width: 80px;
+    height: 30%;
+    border-radius: 10px;
+} */
+
+#header #searchbar input:active {
+    border: none;
+}
+
+.hamburger {
+    color: white;
+    background: transparent;
+    cursor: pointer;
+    border: none;
+    display: none;
+}
+
+.hamburger:focus {
+    outline: none;
+}
+
+.main-container {
+    width: 100%;
+    height: 100%;
+    /* background-color: #6de5cc; */
+    background-color: rgb(231, 229, 229);
+}
+
+.para {
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-bottom: 3%;
+}
+
+.title {
+    font-family: 'IM Fell Great Primer', serif;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.snippet {
+    font-family:  Segoe UI;
+    font-weight: 600;
+}
+
+.story-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.cards {
+    margin: auto;
+    max-width: 300px;
+    max-height: 300px;
+    height: 200px;
+    /* display: grid;
+    grid-template-rows: minmax(80px, auto) 1fr auto; */
+    gap: 0px;
+    border-radius: 2px;
+    border: 2px solid rgb(60, 60, 59);
+}
+
+.image-wrapper img {
+    width: 250px;
+    height: 300px;
+}
+
+article {
+    margin-bottom: 100px;
+}
+
+#header nav .icon {
+    display: none;
+}
+
+#header #logo .menu-btn i {
+    color: white;
+    cursor: pointer;
+    display: none;
+}
+
+
+footer {
+    align-items: center;
+    height: 40px;
+    background-color: #323641;
+    text-decoration: none;
+    text-align: center;
+    color: turquoise;
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+}
+
+@media screen and (max-width: 600px) {
+
+    #header {
+        width: 100%;
+        height: auto;
+        display: block;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        display: flex;
+        flex-direction: row;
+    }
+
+    #searchbar {
+        display: none;
+    }
+
+    #header .nav-ul  {
+        align-items: center;
+        display: none;
+        /* margin-left: -500px; */
+        flex-direction: column;
+        width: 100%;
+    }
+
+    #header .nav-ul.show {
+        display: flex;
+        width: 100%;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+  }
