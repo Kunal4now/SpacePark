@@ -1,0 +1,26 @@
+<html lang="en">
+<head>
+    <%- include('./partials/header.ejs') %>
+    <link rel="stylesheet" href="../public/stylesheets/nav.css">
+    <link rel="stylesheet" href="../public/stylesheets/create-post.css">
+    <title>Create Post</title>
+</head>
+<body>
+    <%- include('./partials/nav.ejs') %>
+    <div class="container">
+        <form action="" method="POST">
+            <label for="title">
+                <small>Title</small>
+            </label>
+            <input type="text" class="title">
+            <label for="snippet">
+                <small>Snippet</small>
+            </label>
+            <textarea type="text" class="snippet"></textarea>
+            <button class="publish">Publish</button>
+            <!-- <button class="btn btn-success"></button> -->
+        </form>
+    </div>
+    <%- include('./partials/footer.ejs') %>
+</body>
+</html>
