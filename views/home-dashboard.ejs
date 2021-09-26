@@ -1,0 +1,24 @@
+<html lang="en">
+<head>
+    <%- include('./partials/header.ejs') %>
+    <link rel="stylesheet" href="../public/stylesheets/home-dashboard.css">
+    <title>Dashboard</title>
+</head>
+<body>
+    <%- include('./partials/nav.ejs') %>
+    <div class="main-container">
+        <% if (blogs.length > 0) { %>
+            <% blogs.forEach(blog => { %>
+                <div class="para">
+                    <h3 class="title"><%= blog.title %></h3>
+                    <p class="snippet"><%= blog.snippet%></p>
+                </div>
+            <% }) %>
+        <% } else { %>
+            <p class="snippet">Oops seems like your feed is empty</p>
+        <% } %>
+    </div>
+    <%- include('./partials/footer.ejs') %>
+</body>
+<script src="../public/javascripts/profile-new.js"></script>
+</html>
