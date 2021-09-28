@@ -1,9 +1,12 @@
 var express = require('express');
+const morgan = require('morgan');
 var path = require('path');
 var app = express();
 
 require('dotenv').config()
 const db = require('./db')
+var index = require('./routes/index') 
+var users = require('./routes/users')
 
 const hostname = process.env.HOST;
 const port = process.env.PORT;
@@ -13,6 +16,10 @@ app.set('view engine', 'ejs')
 
 //It basically tells our express app to use the public folder in the app
 app.use('/public', express.static('public'))
+app.use(express.urlencoded({extended: false}));
+app.use(morgan('dev'));
+
+app.use('/', index);
 
 app.get('/', (req, res) =>{
   res.render('home-guest')
@@ -44,6 +51,7 @@ app.get('/home-dashboard', (req, res) => {
   res.render('home-dashboard', {blogs})
 })
 
+app.use(users)
 
 app.listen(port)
     console.log(`listening on port http://${hostname}:${port}/`)
