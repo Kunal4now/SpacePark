@@ -7,11 +7,14 @@
 <body>
     <%- include('./partials/nav.ejs') %>
     <div class="main-container">
+        <form action="/logout?_method=DELETE" method="POST">
+            <button type="submit">Logout</button>
+        </form>
         <% if (blogs.length > 0) { %>
             <% blogs.forEach(blog => { %>
                 <div class="para">
                     <h3 class="title"><%= blog.title %></h3>
-                    <p class="snippet"><%= blog.snippet%></p>
+                    <p class="snippet"><%= blog.description%></p>
                 </div>
             <% }) %>
         <% } else { %>
@@ -20,5 +23,12 @@
     </div>
     <%- include('./partials/footer.ejs') %>
 </body>
+<script>
+    function replace() {
+  console.log(username, "j")
+  location.href(`/profile-new/${username}`);
+  console.log(`/profile-new/${username}`);
+}
+</script>
 <script src="../public/javascripts/profile-new.js"></script>
 </html>
