@@ -17,12 +17,10 @@ app.use(session({
   saveUninitialized: false
 }))
 
-
-var index = require('./routes/index') 
 var authRoute = require('./routes/auth')
 var userRoute = require('./routes/users')
 var inedxRoute = require('./routes/index')
-const { error } = require('console');
+var postRoute = require('./routes/posts')
 
 const hostname = process.env.HOST;
 const port = process.env.PORT;
@@ -45,58 +43,10 @@ app.use(morgan('dev'));
 initializePassport(passport)
 
 app.use('/', authRoute)
-
 app.use('/', inedxRoute)
-// app.get('/', checkNotAuthenticated, (req, res) =>{
-//   res.render('home-guest')
-// })
-
-// app.get('/profile', checkAuthenticated ,(req, res) => {
-//   res.render('profile')
-// })
-
-// app.get('/404', (req, res) => {
-//   res.render('404')
-// })
-
-// app.get('/profile-new/:id', checkAuthenticated, (req, res) => {
-//   if (req.user.id === req.params.id) {
-//     res.render('profile-new')
-//   } else {
-//     return res.status(400).send({
-//       message: 'This is an error!'
-//    });
-//   }
-// })
-
-// app.get('/create-post', checkAuthenticated, (req, res) => {
-//   res.render('create-post', {id: req.user.id})
-// })
-
-// app.get('/home-dashboard', checkAuthenticated, (req, res) => {
-//   const blogs = [
-//     {title: 'Yoshi finds eggs', snippet: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, earum facilis. Porro soluta et quas odio magnam ipsum! Ipsam, veritatis ab tempore commodi minima tenetur quasi illo quam nemo delectus quo nam beatae repudiandae assumenda consectetur veniam quidem voluptates et aperiam debitis vitae unde. Iusto natus quod minima voluptates eaque.'},
-//     {title: 'Mario finds stars', snippet: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, earum facilis. Porro soluta et quas odio magnam ipsum! Ipsam, veritatis ab tempore commodi minima tenetur quasi illo quam nemo delectus quo nam beatae repudiandae assumenda consectetur veniam quidem voluptates et aperiam debitis vitae unde. Iusto natus quod minima voluptates eaque.'},
-//     {title: 'How to defeate bowser', snippet: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, earum facilis. Porro soluta et quas odio magnam ipsum! Ipsam, veritatis ab tempore commodi minima tenetur quasi illo quam nemo delectus quo nam beatae repudiandae assumenda consectetur veniam quidem voluptates et aperiam debitis vitae unde. Iusto natus quod minima voluptates eaque.'}
-//   ]
-//   res.render('home-dashboard', {blogs, id: req.user.id})
-// })  
-
 app.use('/profile-new/', userRoute)
+app.use('/posts', postRoute)
 
-function checkAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) {
-    return next()
-  }
-  res.redirect('/')
-}
-
-function checkNotAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) {
-    return res.redirect('/home-dashboard')
-  }
-  next()
-}
 
 app.listen(port)
     console.log(`listening on port http://${hostname}:${port}/`)
