@@ -1,18 +1,29 @@
 const db = require('../db')
-const { ServerDescription } = require('mongoose/node_modules/mongodb')
 
 const postSchema = new db.Schema({
+    userID: {
+        type: String,
+        required: true
+    },
+    author: {
+        type: String,
+        required: true
+    },
     title: {
         type: String,
         required: true
     },
     description: {
+        type: String,
+        required: true
+    },
+    snippet: {
         type: String
     },
     createdAt: {
         type: Date,
-        default: Date.now
+        default: Date.now()
     }
-})
+}, {timestamps: true})
 
 module.exports = db.model('Post', postSchema);
