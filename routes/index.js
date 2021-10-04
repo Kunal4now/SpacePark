@@ -22,15 +22,25 @@ router.get('/home-dashboard', checkAuthenticated, async (req, res) => {
       } else {       
         res.render('home-dashboard', {blogs: posts, id: req.user.id})
       }
-    })
+    }).sort({createdAt: 'desc'})
   } catch(err) {
     res.status(500).json("Error")
   }
 })
 
-router.get('/profile-new/:id', checkAuthenticated, (req, res) => {
+router.get('/profile-new/:id', checkAuthenticated, async (req, res) => {
   if (req.user.id === req.params.id) {
-    res.render('profile-new', {id: req.user.id})
+    try {
+      Post.find({userID: req.user.id}, (err, posts) => {
+        if (err) {
+          res.status(500).json("No post found")
+        } else {       
+          res.render('profile-new', {blogs: posts, id: req.user.id})
+        }
+      }).sort({createdAt: 'desc'})
+    } catch(err) {
+      res.status(500).json("Error")
+    }
   } else {
     return res.status(400).send({
       message: 'This is an error!'
