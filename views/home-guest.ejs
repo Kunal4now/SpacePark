@@ -1,7 +1,7 @@
 <html lang="en">
 <head>
     <%- include('./partials/header.ejs') %>
-    <link rel="stylesheet" type="text/css" href="../public/stylesheets/home-guest.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/home-guest.css">
     <title>SpacePark</title>
 </head>
 <body style="background-color: rgb(245, 243, 243);">
@@ -11,16 +11,19 @@
             <a href="#" class="navbar-brand">
                 <span class="fw-bold h3">SpacePark</span>
             </a>
-            <form class="form-inline navbar-form navbar-center my-2 my-auto">
+            <% if (messages.error) { %>
+              <%= messages.error %>
+            <% } %>
+            <form class="form-inline navbar-form navbar-center my-2 my-auto" method="POST" action="/login">
                 <div class="input-group">
-                  <input type="text" class="form-control form-control-sm m-2 rounded" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
-                  <input type="password" class="form-control form-control-sm m-2 rounded" placeholder="Password" aria-describedby="passwordHelpBlock">
+                  <input type="email" class="form-control form-control-sm m-2 rounded" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" name="loginEmail" required>
+                  <input type="password" class="form-control form-control-sm m-2 rounded" placeholder="Password" aria-describedby="passwordHelpBlock" name = "loginPassword" required>
                   <button id="login-btn" class="btn btn-outline-success m-2 rounded" type="submit">Log In</button>
                 </div>
               </form>
         </div>
     </nav>
-    
+    <%- include('./partials/alert.ejs') %>
     <div class="container py-md-5">
         <div class="row align-items-center">
             <div class="col-lg-7 py-3 py-md-5">
@@ -30,20 +33,21 @@
                 <!-- <p class="lead text-muted">Are you sick of short tweets and impersonal “shared” posts that are reminiscent of the late 90’s email forwards? We believe getting back to actually writing is the key to enjoying the internet again.</p> -->
             </div>
             <div class="col-lg-5 pl-lg-5 pb-3 py-lg-5 px-lg-5">
+    
                 <form action="/register" method="POST" id="registration-form">
                     <div class="form-group">
                       <label for="username-register" class="text-muted mb-1"><small>Username</small></label>
-                      <input name="username" id="username-register" class="form-control" type="text" placeholder="Pick a username" autocomplete="off">
+                      <input name="username" id="username-register" class="form-control" type="text" placeholder="Pick a username" autocomplete="off" required>
                     </div>
                     
                     <div class="form-group">
                       <label for="email-register" class="text-muted mb-1"><small>Email</small></label>
-                      <input name="email" id="email-register" class="form-control" type="text" placeholder="you@example.com" autocomplete="off">
+                      <input name="email" id="email-register" class="form-control" type="email" placeholder="you@example.com" autocomplete="off" required>
                     </div>
                     
                     <div class="form-group">
                       <label for="password-register" class="text-muted mb-1"><small>Password</small></label>
-                      <input name="password" id="password-register" class="form-control" type="password" placeholder="Create a password">
+                      <input name="password" id="password-register" class="form-control" type="password" placeholder="Create a password" required>
                     </div>
                
                     <input type="hidden" name="_csrf" value="IyOURRR7-wJAIkEzz5-bY1HZcKF9R7PkulLw">                  
