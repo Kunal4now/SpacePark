@@ -6,7 +6,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="../public/stylesheets/profile-new.css">
+    <link rel="stylesheet" href="/stylesheets/profile-new.css">
     <script src="https://kit.fontawesome.com/6747d42fe5.js" crossorigin="anonymous"></script>
     <title>SpacePark Profile</title>
 </head>
@@ -24,32 +24,35 @@
             </button>
         </nav>
         <ul class="nav-ul" id="nav-ul">
-            <li><a href="#">HOME</a></li>
-            <li><a href="#">TIMELINE</a></li>
-            <li><a href="#">FOLLOWERS</a></li>
-            <li><a href="#">FOLLOWING</a></li>
+            <li><a href="/home-dashboard">Home</a></li>
+            <li><a href="/profile-new/<%= id%>">Timeline</a></li>
+            <li><a href="#">Followers</a></li>
+            <li><a href="#">Following</a></li>
         </ul>
         <div id="searchbar" class="wrap">
             <input type="text" placeholder="What are you looking for?" class="search-term">
             <button type="button" class="search-button">
                 <i class="fa fa-search"></i>
             </button>
+            <a href="/create-post" class="create">Create Post</a>
         </div>
     </div>
     <div id="header-below">
-        <div id="avatar">
-            <img src="https://pbs.twimg.com/media/EiNVhxQWsAALotp.jpg" alt="">
-        </div>
+            <!-- <img src="https://pbs.twimg.com/media/EiNVhxQWsAALotp.jpg" alt=""> -->
+            <img class="img-fluid" src="data:image/png;base64,<%= image %>"/>
         <div id="icon-tray">
-            <i class="fa fa-solid fa-gear fa-1x"></i>
+            <a href="/profile-new/<%= id %>/edit "><i class="fa fa-solid fa-gear fa-1x"></i></a>
             <i class="fa fa-solid fa-envelope fa-1x"></i>
             <i class="fa fa-solid fa-bell fa-1x"></i>
         </div>
     </div>
     <div class="main-container">
-        
+        <div class="container" style="text-align: center;">
+            <span><h2>Your Posts</h2></span>
+        </div>
+        <%- include('./partials/blog-card.ejs') %> 
     </div>
     <%- include('./partials/footer.ejs') %>
 </body>
-<script src="../public/javascripts/profile-new.js"></script>
+<script src="/javascripts/profile-new.js"></script>
 </html>
