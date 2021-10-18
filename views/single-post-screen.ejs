@@ -1,0 +1,72 @@
+<html lang="en">
+<head>
+    <%- include('./partials/header.ejs') %>
+    <link rel="stylesheet" href="/stylesheets/home-dashboard.css">
+    <link rel="stylesheet" href="/stylesheets/single-post-screen.css">
+    <title><%= post.title %></title>
+</head>
+<body>
+    <%- include('./partials/nav.ejs') %> 
+    <!-- <div id="header" class="head">
+        <div id="logo">
+            <h3>
+                <span style="color: #323641;">Space</span>
+                <span>Park</span>
+            </h3>
+        </div>  
+        <nav>
+            <button class="hamburger" id="hamburger">
+                <i class="fas fa-bars fa-2x"></i>
+            </button>
+        </nav>
+        <ul class="nav-ul" id="nav-ul">
+            <li><a href="/home-dashboard">HOME</a></li>
+            <li><a href="#">TIMELINE</a></li>
+            <li><a href="#">FOLLOWERS</a></li>
+            <li><a href="#">FOLLOWING</a></li>
+            <li><a href="/create-post">CREATE POST</a></li>
+        </ul>
+        <div id="searchbar" class="wrap">
+            <input type="text" placeholder="What are you looking for?" class="search-term">
+            <button type="button" class="search-button">
+                <i class="fa fa-search"></i>
+            </button>
+        </div>
+    </div> -->
+    <%- include('./partials/messg-alert.ejs') %> 
+    <div class="main-container">
+        <div class="main">
+            <div class="title">
+                <h1><%= post.title %> </h1>
+            </div>
+            <div class="secondary">
+                <div class="author">
+                    <span><%= post.author %> </span> 
+                    <div class="createdOn text-muted"><%= post.createdAt.toDateString() %></div>
+                </div>
+                <div>
+                    <div class="btn-group">
+                        <button class="edit-btn">Edit</button>
+                        <!-- <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#reg-modal">
+                            Edit
+                          </button> -->
+                        <!-- <a href="" class="btn btn-sm btn-warning">Edit</a> -->
+                        <button class="delete-btn" data-bs-toggle="modal" data-bs-target="#reg-modal">Delete</button>
+                        <!-- <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#reg-modal"">Delete</button> -->
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="description">
+                <p><%= post.description %> </p>
+            </div>
+            <div class="snippet">
+                <p><%= post.snippet %> </p>
+            </div>
+        </div>
+    </div>
+    <%- include('./partials/modal.ejs') %> 
+    <%- include('./partials/footer.ejs') %>
+</body>
+<script src="../public/javascripts/profile-new.js"></script>
+</html>
