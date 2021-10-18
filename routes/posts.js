@@ -1,7 +1,7 @@
 var express = require('express');
+const { findById } = require('../models/Post');
 var router = express.Router();
 const Post = require('../models/Post')
-const url = require('url')
 
 router.post('/create', async (req, res) => {
     const post = new Post({
@@ -43,7 +43,7 @@ router.get('/:id', async (req, res) => {
             if (error) {
                 res.render('single-post-screen')
             } else {
-                res.render('single-post-screen', {post: doc})
+                res.render('single-post-screen', {post: doc, id: req.params.id})
             }
         })
     } catch(err) {
@@ -60,6 +60,25 @@ router.put('/update/:id', async(req, res) => {
     } else {
         res.status(500).json("You can only edit posts that you have authored")
     }
+})
+
+router.delete('/delete/:id', async (req, res) => {
+    Post.findById(req.params.id).exec().then((doc) => {
+        if (doc.userID === req.user.id) {
+                doc.remove()
+                req.session.message = {
+                    type: 'success',
+                    message:'Post deleted successfully!'
+                }
+                res.redirect('/home-dashboard')
+        } else {
+            req.session.message = {
+                type: 'danger',
+                message:'You can only delete your own post'
+            }
+            res.redirect(`/posts/${req.params.id}`)
+        }
+    }).catch((error) => res.status(500).json(error))
 })
 
 module.exports = router
