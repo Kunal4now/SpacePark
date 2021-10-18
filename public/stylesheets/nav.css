@@ -1,16 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=IM+Fell+Great+Primer&display=swap');
-
-* {
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
-    font-family: poppins, sans-serif;
-    font-weight: 700;
-}
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@900&family=Martel+Sans:wght@900&display=swap');
 
 #header {
     background-image: linear-gradient(30deg, #1E96B8, #2FB4C7);
+    font-family: poppins, sans-serif;
     height: fit-content;
     width: 100%;
     padding: 20px;
@@ -32,6 +26,8 @@
 
 
 #header .nav-ul li a {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: normal;
     display: flex;
     flex-direction: row;
     font-size: 14px;
@@ -46,51 +42,59 @@
     text-align: center;
     display: flex;
     justify-content: space-between;
+    margin-right: 100px;
 }
 
 #header .nav-ul li a:hover {
     color: #6de5cc;
 }
-
-/* #header #searchbar input {
-    text-align: center;
-    border: none;
-    border-radius: 10px;
-    width: 250px;
-    height: 30%;
-} */
+.search-button:hover {
+    color: #6de5cc;
+}
 
 .search-term {
-    border: 3px solid #00B4CC;
-    border-right: none;
-    padding: 15px;
-    height: 20px;
-    border-radius: 6px;
-    outline: none;
-    color: #9DBFAF;
+    border:none;
+    padding: 5px;
+    background-color: #1784A5;
+    border-radius: 25px;
+    color: white;
+    font-weight: normal;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    font-size: small;
+  }
+
+  ::placeholder {
+      color: white;
+      opacity: 1;
   }
 
 .search-button {
-    width: 40px;
-    height: 36px;
-    border: 1px solid #00B4CC;
-    background: #00B4CC;
-    text-align: center;
-    color: #fff;
-    border-radius: 0 5px 5px 0;
-    cursor: pointer;
-    font-size: 20px;
+    background-color: #1784A5;
+    color: white;
+    border: none;
+    padding: 7px;
+    border-radius: 15px;
+    width: 50px;
   }
 
+  .create {
+      color: white;
+      /* border: 1px solid white; */
+      border: none;
+      background-color: #1784A5;
+      font-weight: normal;
+      font-family: 'Segoe UI';
+      font-size: small;
+      border-radius: 25px;
+      padding: 6px;
+  }
 
-
-/* #header #searchbar button {
-    background-color: white;
-    border: none;
-    width: 80px;
-    height: 30%;
-    border-radius: 10px;
-} */
+  #searchbar > *:not(:last-child) {
+      /* display: block; */
+      margin-top: 4px;
+      margin-right: 10px;
+  }
 
 #header #searchbar input:active {
     border: none;
@@ -107,3 +111,55 @@
 .hamburger:focus {
     outline: none;
 }
+
+#header nav .icon {
+    display: none;
+}
+
+#header #logo .menu-btn i {
+    color: white;
+    cursor: pointer;
+    display: none;
+}
+
+@media screen and (max-width: 600px) {
+
+    #header {
+        width: 100%;
+        height: auto;
+        display: block;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        display: flex;
+        flex-direction: row;
+    }
+
+    #searchbar {
+        display: none;
+    }
+
+    #header .nav-ul  {
+        align-items: center;
+        display: none;
+        /* margin-left: -500px; */
+        flex-direction: column;
+        width: 100%;
+    }
+
+    #header .nav-ul.show {
+        display: flex;
+        width: 100%;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .main-container {
+        width: 100%;
+    }
+
+    .card {
+        margin: 5%;
+    }
+  }
