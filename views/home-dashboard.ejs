@@ -8,37 +8,19 @@
     <%- include('./partials/nav.ejs') %> 
     <%- include('./partials/messg-alert.ejs') %> 
     <div class="main-container">
-        <!-- <form action="/logout?_method=DELETE" method="POST">
+        <form action="/logout?_method=DELETE" method="POST">
             <button type="submit">Logout</button>
-        </form> -->
-        <% if (blogs.length > 0) { %>
-            <% blogs.forEach(blog => { %>
-                <div class="shadow-sm card mt-4">
-                    <div class="card-body">
-                        <div class="author-details mb-2">
-                            <img src="data:image/png;base64,<%= image %>" class="img-fluid avatar">
-                            <span style="font-weight: 500; font-size: 13px;"><%= blog.author %></span>
-                        </div>
-                        <h3 class="title"><a href="/posts/<%= blog.id %>"><%= blog.title %></a></h3>
-                        <p class="snippet" style="color: rgba(117, 117, 117, 1);"><%= blog.description%></p>
-                        <div class="card-subtitle text-muted mb-2" style="font-weight: 500; font-size: 12px;">
-                            <%= blog.createdAt.toDateString() %>
-                        </div>
-                    </div>
-                </div>
-            <% }) %>
-        <% } else { %>
-            <p class="snippet">Oops seems like your feed is empty</p>
-        <% } %>
+        </form>
+        <%- include('./partials/blog-card.ejs') %> 
     </div>
     <%- include('./partials/footer.ejs') %>
 </body>
-<script>
+<!-- <script>
     function replace() {
   console.log(username, "j")
   location.href(`/profile-new/${username}`);
   console.log(`/profile-new/${username}`);
 }
-</script>
+</script> -->
 <script src="/javascripts/profile-new.js"></script>
 </html>
