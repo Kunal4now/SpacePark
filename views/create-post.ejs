@@ -1,23 +1,27 @@
 <html lang="en">
 <head>
     <%- include('./partials/header.ejs') %>
-    <link rel="stylesheet" href="../public/stylesheets/nav.css">
-    <link rel="stylesheet" href="../public/stylesheets/create-post.css">
+    <link rel="stylesheet" href="/stylesheets/home-dashboard.css">
+    <link rel="stylesheet" href="/stylesheets/create-post.css">
     <title>Create Post</title>
 </head>
 <body>
     <%- include('./partials/nav.ejs') %>
     <div class="container">
-        <form action="" method="POST">
+        <form action="/posts/create" method="POST">
             <label for="title">
                 <small>Title</small>
             </label>
-            <input type="text" class="title">
+            <input type="text" class="title" name="title">
+            <label for="description">
+                <small>Description</small>
+            </label>
+            <input type="text" class="description" name="description">
             <label for="snippet">
                 <small>Snippet</small>
             </label>
-            <textarea type="text" class="snippet"></textarea>
-            <button class="publish">Publish</button>
+            <textarea type="text" class="snippet" name="snippet"></textarea>
+            <button class="publish" type="submit">Publish</button>
             <!-- <button class="btn btn-success"></button> -->
         </form>
     </div>

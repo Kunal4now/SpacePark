@@ -17,6 +17,11 @@
     margin-bottom: 30px;
 }
 
+.description {
+    height: 50px;
+    margin-bottom: 30px;
+}
+
 .snippet {
     padding: 0px;
     height: 50vh;
@@ -34,3 +39,45 @@ textarea, input {
     color: white;
     padding: 20px;
 }
+
+@media screen and (max-width: 600px) {
+
+    #header {
+        width: 100%;
+        height: auto;
+        display: block;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        display: flex;
+        flex-direction: row;
+    }
+
+    #searchbar {
+        display: none;
+    }
+
+    #header .nav-ul  {
+        align-items: center;
+        display: none;
+        /* margin-left: -500px; */
+        flex-direction: column;
+        width: 100%;
+    }
+
+    #header .nav-ul.show {
+        display: flex;
+        width: 100%;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .main-container {
+        width: 100%;
+    }
+
+    .card {
+        margin: 5%;
+    }
+  }
