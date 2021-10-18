@@ -1,0 +1,71 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-weight: 700;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    margin-top: 2%;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.avatar {
+    display: flex;
+    justify-content: center;
+}
+
+/* img {
+    border-radius: 50%;
+    object-fit: cover;
+    height: 100px;
+    width: 100px;
+} */
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.input-group input {
+    width: 300px;
+    height: 40px;
+    border: none;
+    background-color: #1784A5;
+    border-radius: 5px;
+    font-weight: normal;
+}
+
+.input-group input > * {
+    border-radius: 5;
+}
+
+.input-group .sub-btn {
+    width: 200px;
+}
+
+.sub-btn {
+    width: 100px;
+    height: 50px;
+    border: none;
+    background-color: #1784A5;
+    font-family: 'Segoe UI';
+    font-weight: normal;
+}
+
+.submit-button {
+    display: flex;
+    justify-content: center;
+}
+
+form > * {
+    margin-bottom: 30px;
+}

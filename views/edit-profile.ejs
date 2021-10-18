@@ -1,0 +1,37 @@
+<html lang="en">
+<head>
+    <%- include('./partials/header.ejs') %> 
+    <link rel="stylesheet" href="/stylesheets/nav.css">
+    <link rel="stylesheet" href="/stylesheets/edit-profile.css">
+    <title>Edit Profile</title>
+</head>
+<body>
+    <%- include("./partials/nav.ejs") %>
+    <div class="container">
+        <form action="/profile-new/<%= id %>/updateProfile " method="post" enctype="multipart/form-data">
+            <input type="file" name="image">
+            <button type="submit">Submit</button>
+        </form>
+        <br>
+        <div>
+        <!-- <img src="<%= typeof file != 'undefined' ? file : '' %> " class="img-fluid"> -->
+        <img class="img-fluid" src="data:image/png;base64,<%= typeof image != 'undefined' ? image : ''%>"/>
+        </div>
+        <!-- <form action="" method="post" enctype="multipart/form-data">
+            <div class="avatar">
+                <input type="file">
+            </div>
+            <div class="input-group">
+                <label for="username">Name</label>
+                <input type="text" placeholder="username" id="username">
+                <label for="old-password">Old password</label>
+                <input type="password" placeholder="old password" id="old-password">
+            </div>
+            <div class="submit-button">
+                <button type="submit" class="sub-btn">Save</button>
+            </div>
+        </form> -->
+    </div> 
+    <%- include("./partials/footer.ejs") %> 
+</body>
+</html>
