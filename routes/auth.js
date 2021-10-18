@@ -6,20 +6,21 @@ const passport = require("passport");
 const router = express.Router();
 
 router.post(
-  "/login", checkNotAuthenticated ,
+  "/login",
+  checkNotAuthenticated,
   passport.authenticate("local", {
     successRedirect: "/home-dashboard",
     failureRedirect: "/",
     failureFlash: true,
   })
-);  
+);
 
-router.delete('/logout', (req, res) => {
-  req.logOut()
-  res.redirect('/')
-})
+router.delete("/logout", (req, res) => {
+  req.logOut();
+  res.redirect("/");
+});
 
-router.post("/register", checkNotAuthenticated , async (req, res) => {
+router.post("/register", checkNotAuthenticated, async (req, res) => {
   let errors = [];
   try {
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
@@ -57,9 +58,9 @@ router.post("/register", checkNotAuthenticated , async (req, res) => {
 
 function checkNotAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
-    return res.redirect('/')
+    return res.redirect("/");
   }
-  next()
+  next();
 }
 
-module.exports = router
+module.exports = router;
