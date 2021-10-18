@@ -1,0 +1,126 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@900&family=Martel+Sans:wght@900&display=swap');
+
+.main {
+    margin-left: 400px;
+    margin-right: 400px;
+    margin-top: 60px;
+}
+
+.title {
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-family: 'Heebo', sans-serif;
+    font-weight: bolder;
+}
+
+p {
+    font-size: 20px;
+    font-weight: normal;
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+}
+
+.secondary {
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 40px;
+}
+
+.author {
+    display: flex;
+    flex-direction: row;
+}
+
+.author span {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: lighter;
+}
+
+.createdOn {
+    display: block;
+    margin-left: 25px;
+    /* font-size: 13px; */
+    font-family: 'Segoe UI';
+    font-weight: lighter;
+}
+
+.edit-btn, .delete-btn {
+    color: white;
+    /* background-color: #6de5cc; */
+    font-weight: lighter;
+    background-color: #1784A5;
+    border: none;
+    width: 70px;
+    border-radius: 25px;
+    padding: 5px;
+    font-size: small;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.btn-group {
+    display: block;
+}
+
+.create {
+    color: white;
+    /* border: 1px solid white; */
+    border: none;
+    background-color: #1784A5;
+    font-weight: normal;
+    font-family: 'Segoe UI';
+    font-size: small;
+    border-radius: 25px;
+    padding: 6px;
+}
+
+
+@media screen and (max-width: 600px) {
+
+    .main {
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-top: 60px;
+    }
+
+    #header {
+        width: 100%;
+        height: auto;
+        display: block;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        display: flex;
+        flex-direction: row;
+    }
+
+    #searchbar {
+        display: none;
+    }
+
+    #header .nav-ul  {
+        align-items: center;
+        display: none;
+        /* margin-left: -500px; */
+        flex-direction: column;
+        width: 100%;
+    }
+
+    #header .nav-ul.show {
+        display: flex;
+        width: 100%;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .main-container {
+        width: 100%;
+    }
+
+    .card {
+        margin: 5%;
+    }
+  }
