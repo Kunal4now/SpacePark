@@ -20,7 +20,8 @@ app.use(session({
 var authRoute = require('./routes/auth')
 var userRoute = require('./routes/users')
 var inedxRoute = require('./routes/index')
-var postRoute = require('./routes/posts')
+var postRoute = require('./routes/posts');
+const cookieParser = require('cookie-parser');
 
 const hostname = process.env.HOST;
 const port = process.env.PORT;
@@ -28,7 +29,8 @@ const port = process.env.PORT;
 app.set('view engine', 'ejs')
 
 // It basically tells our express app to use the public folder in the app
-app.use('/public', express.static('public'))
+// app.use('/public', express.static('public'))
+app.use(express.static('public'))
 app.use(express.json());
 app.use(express.urlencoded({extended: false}))
 
@@ -38,13 +40,20 @@ app.use(passport.initialize())
 app.use(passport.session())
 app.use(methodOverride('_method'))
 app.use(morgan('dev'));
+// app.use(cookieParser(process.env.SESSION_SECRET))
 
 //initializing the passport functionality
 initializePassport(passport)
 
+app.use((req, res, next) => {
+  res.locals.message = req.session.message
+  delete req.session.message
+  next()
+})
+
 app.use('/', authRoute)
 app.use('/', inedxRoute)
-app.use('/profile-new/', userRoute)
+app.use('/profile-new', userRoute)
 app.use('/posts', postRoute)
 
 
