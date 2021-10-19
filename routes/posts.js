@@ -43,14 +43,6 @@ router.get('/:id', async (req, res) => {
         }).catch((err) => {
             res.render('sigle-post-screen')
         })
-        // Post.findById(req.params.id, (error, doc) => {
-        //     if (error) {
-        //         res.render('single-post-screen')
-        //     } else {
-        //         console.log(doc)
-        //         res.render('single-post-screen', {post: doc, id: req.params.id})
-        //     }
-        // }).populate('author')
     } catch(err) {
         res.status(500).json(err)
     }
@@ -69,7 +61,7 @@ router.put('/update/:id', async(req, res) => {
 
 router.delete('/delete/:id', async (req, res) => {
     Post.findById(req.params.id).exec().then((doc) => {
-        if (doc.userID === req.user.id) {
+        if (doc.author == req.user.id) {
                 doc.remove()
                 req.session.message = {
                     type: 'success',
