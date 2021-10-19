@@ -1,13 +1,10 @@
+const { Schema } = require('mongoose');
 const db = require('../db')
 
 const postSchema = new db.Schema({
-    userID: {
-        type: String,
-        required: true
-    },
-    author: {
-        type: String,
-        required: true
+    author : {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
     },
     title: {
         type: String,
