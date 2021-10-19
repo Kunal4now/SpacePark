@@ -16,7 +16,7 @@ const fileStorageEngine = multer.diskStorage({
 });
 
 checkFileType = (file, cb) => {
-  const filetypes = /jpeg|jpg|png|gif/;
+  const filetypes = /jpeg|jpg|png|gif|jfif/;
   const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
   const mimetype = filetypes.test(file.mimetype);
   if (mimetype && extname) {
@@ -30,7 +30,7 @@ const upload = multer({
   storage: fileStorageEngine,
   limits: { fileSize: 1000000 },
   fileFilter(req, file, cb) {
-    if (!file.originalname.match(/\.(png|jpg)$/)) {
+    if (!file.originalname.match(/\.(png|jpg|jfif)$/)) {
       // upload only png and jpg format
       return cb(new Error("Please upload a Image"));
     }
