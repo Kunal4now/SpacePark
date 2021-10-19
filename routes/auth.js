@@ -1,6 +1,7 @@
 var express = require("express");
 const bcrypt = require("bcrypt");
 var User = require("../models/User");
+const fs = require('fs')
 const passport = require("passport");
 
 const router = express.Router();
@@ -28,6 +29,10 @@ router.post("/register", checkNotAuthenticated, async (req, res) => {
       username: req.body.username,
       email: req.body.email,
       password: hashedPassword,
+      profilePicture: {
+        data: fs.readFileSync('public/default/default_profile_pic.png').toString('base64'),
+        contentType: 'image/png'
+      }
     });
 
     if (req.body.password.length < 6) {
