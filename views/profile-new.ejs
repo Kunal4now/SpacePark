@@ -39,7 +39,7 @@
     </div>
     <div id="header-below">
             <!-- <img src="https://pbs.twimg.com/media/EiNVhxQWsAALotp.jpg" alt=""> -->
-            <img class="img-fluid" src="data:image/png;base64,<%= image %>"/>
+            <img class="img-fluid" src="data:image/png;base64,<%= user.profilePicture.data.toString('base64') %>"/>
         <div id="icon-tray">
             <a href="/profile-new/<%= id %>/edit "><i class="fa fa-solid fa-gear fa-1x"></i></a>
             <i class="fa fa-solid fa-envelope fa-1x"></i>

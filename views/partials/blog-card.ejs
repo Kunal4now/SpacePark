@@ -3,8 +3,8 @@
         <div class="shadow-sm card mt-4">
             <div class="card-body">
                 <div class="author-details mb-2">
-                    <img src="data:image/png;base64,<%= image %>" class="img-fluid avatar">
-                    <span style="font-weight: 500; font-size: 13px;"><%= blog.author %></span>
+                    <img src="data:image/png;base64,<%= blog.author.profilePicture.data.toString('base64') %>" class="img-fluid avatar">
+                    <span style="font-weight: 500; font-size: 13px;"><%= blog.author.username %></span>
                 </div>
                 <h3 class="title"><a href="/posts/<%= blog.id %>"><%= blog.title %></a></h3>
                 <p class="snippet" style="color: rgba(117, 117, 117, 1);"><%= blog.description%></p>
