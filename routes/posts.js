@@ -5,8 +5,7 @@ const Post = require('../models/Post')
 
 router.post('/create', async (req, res) => {
     const post = new Post({
-        userID: req.user.id,
-        author: req.user.username,
+        author: req.user.id,
         title: req.body.title,
         description: req.body.description,
         snippet: req.body.snippet
@@ -23,7 +22,7 @@ router.post('/create', async (req, res) => {
 
 router.get('/find', async (req, res) => {
     try {
-        Post.find({userID: req.user.id}, (error, doc) => {
+        Post.find({author: req.user.id}, (error, doc) => {
             if (error) {
                 res.status(500).json(error)
                 // console.log(err)
@@ -39,13 +38,19 @@ router.get('/find', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
     try {
-        Post.findById(req.params.id, (error, doc) => {
-            if (error) {
-                res.render('single-post-screen')
-            } else {
-                res.render('single-post-screen', {post: doc, id: req.params.id})
-            }
+        Post.findById(req.params.id).populate('author').exec().then(doc => {
+            res.render('single-post-screen', {post: doc, id: req.params.id})
+        }).catch((err) => {
+            res.render('sigle-post-screen')
         })
+        // Post.findById(req.params.id, (error, doc) => {
+        //     if (error) {
+        //         res.render('single-post-screen')
+        //     } else {
+        //         console.log(doc)
+        //         res.render('single-post-screen', {post: doc, id: req.params.id})
+        //     }
+        // }).populate('author')
     } catch(err) {
         res.status(500).json(err)
     }
