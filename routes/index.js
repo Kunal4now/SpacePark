@@ -1,7 +1,8 @@
 var express = require('express');
 const Post = require('../models/Post');
 const User = require('../models/User');
-const fs = require('fs')
+const fs = require('fs');
+const { findById } = require('../models/Post');
 var router = express.Router();
 
 router.get('/', checkNotAuthenticated, (req, res) =>{
@@ -27,13 +28,12 @@ router.get('/home-dashboard', checkAuthenticated, async (req, res) => {
     } else {
       img = img.toString('base64')
     }
-    Post.find({}, (err, posts) => {
-      if (err) {
-        res.status(500).json("No post found")
-      } else {       
-        res.render('home-dashboard', {blogs: posts, id: req.user.id, image:img})
-      }
-    }).sort({createdAt: 'desc'})
+    Post.find({}).populate('author').sort({createdAt: 'desc'}).then((doc) => {
+      res.render('home-dashboard', {blogs: doc, id: req.user.id})
+    }).catch((err) => {
+      console.log(err)
+      res.status(500).json(err)
+    })
   } catch(err) {
     res.status(500).json("Error")
   }
@@ -42,22 +42,12 @@ router.get('/home-dashboard', checkAuthenticated, async (req, res) => {
 router.get('/profile-new/:id', checkAuthenticated, async (req, res) => {
   if (req.user.id === req.params.id) {
     try {
-      const profileUser = await User.findById(req.user.id).then((names) => {
-        return names
-      }).catch((err) => console.log(err))
-      var img = profileUser.profilePicture.data
-      if (typeof img == 'undefined') {
-        img = fs.readFileSync('public/default/default_profile_pic.png').toString('base64');
-      } else {
-        img = img.toString('base64')
-      }
-      Post.find({userID: req.user.id}, (err, posts) => {
-        if (err) {
-          res.status(500).json("No post found")
-        } else {       
-          res.render('profile-new', {blogs: posts, id: req.user.id, image: img})
-        }
-      }).sort({createdAt: 'desc'})
+      const user = await User.findById(req.user.id).exec()
+      Post.find({author: req.user.id}).populate('author').sort({createdAt: 'desc'}).then((doc) => {
+        res.render('profile-new', {blogs: doc, id: req.user.id, user: user})
+      }).catch((err) => {
+        res.send(err)
+      })
     } catch(err) {
       res.status(500).json(err)
     }
