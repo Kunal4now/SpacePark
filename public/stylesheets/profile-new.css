@@ -84,23 +84,38 @@
 .search-term {
     border:none;
     padding: 5px;
-    /* background-color: #1784A5; */
+    background-color: #277da1;
+    border-radius: 2px;
+    color: white;
+    font-weight: normal;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    font-size: small;
+    /* border:none;
+    padding: 5px;
     background-color: #003445;
     border-radius: 25px;
     color: white;
     font-weight: normal;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
-    font-size: small;
+    font-size: small; */
   }
 
 .search-button {
-    background-color: #003445;
+    background-color: #277da1;
+    color: white;
+    border: none;
+    padding: 7px;
+    border-radius: 2px;
+    width: 50px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+    /* background-color: #003445;
     color: white;
     border: none;
     padding: 7px;
     border-radius: 15px;
-    width: 50px;
+    width: 50px; */
   }
 
   #searchbar > *:not(:last-child) {
@@ -240,14 +255,22 @@ a, a:hover, a:active {
 
 .create {
     color: white;
-    /* border: 1px solid white; */
+    border: none;
+    background-color: #277da1;
+    font-weight: normal;
+    font-family: 'Segoe UI';
+    font-size: small;
+    border-radius: 2px;
+    padding: 6px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+    /* color: white;
     border: none;
     background-color: #003445;
     font-weight: normal;
     font-family: 'Segoe UI';
     font-size: small;
     border-radius: 25px;
-    padding: 6px;
+    padding: 6px; */
 }
 
 @media screen and (max-width: 600px) {
