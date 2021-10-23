@@ -1,8 +1,8 @@
 .container {
+    display: flex;
     overflow: visible;
-    width: 655px;
     height: 100vh;
-    margin: 0 auto;
+    justify-content: center;
 }
 
 .container form {
@@ -14,23 +14,32 @@
 
 .title {
     height: 50px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .description {
     height: 50px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
-.snippet {
+/* .snippet {
     padding: 0px;
     height: 50vh;
     margin-bottom: 30px;
-}
+} */
 
 textarea, input {
     font-family: Arial, Helvetica, sans-serif;
     font-weight: normal;
+}
+
+#edit-container {
+    height: 50px;
+}
+
+.ql-toolbar.ql-snow + .ql-container.ql-snow {
+    /* border-top: 0px; */
+    height: 300px;
 }
 
 .publish {
