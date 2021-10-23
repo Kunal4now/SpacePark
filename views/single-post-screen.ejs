@@ -41,10 +41,11 @@
             </div>
             <div class="secondary">
                 <div class="author">
+                    <img src="data:image/png;base64,<%= post.author.profilePicture.data.toString('base64') %>" class="img-fluid avatar m">
                     <span><%= post.author.username %> </span> 
                     <div class="createdOn text-muted"><%= post.createdAt.toDateString() %></div>
                 </div>
-                <div>
+                <div class="edit-button">
                     <div class="btn-group">
                         <button class="edit-btn">Edit</button>
                         <!-- <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#reg-modal">
@@ -61,12 +62,14 @@
                 <p><%= post.description %> </p>
             </div>
             <div class="snippet">
-                <p><%= post.snippet %> </p>
+                <p><%- post.snippet %> </p>
             </div>
+        </div>
+        <div class="footer">
+            SpacePark
         </div>
     </div>
     <%- include('./partials/modal.ejs') %> 
-    <%- include('./partials/footer.ejs') %>
 </body>
 <script src="../public/javascripts/profile-new.js"></script>
 </html>
