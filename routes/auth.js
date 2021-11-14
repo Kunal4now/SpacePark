@@ -30,7 +30,7 @@ router.post("/register", checkNotAuthenticated, async (req, res) => {
       email: req.body.email,
       password: hashedPassword,
       profilePicture: {
-        data: fs.readFileSync('public/default/default_profile_pic.png').toString('base64'),
+        data: fs.readFileSync('public/default/default_profile_pic.png'),
         contentType: 'image/png'
       }
     });
