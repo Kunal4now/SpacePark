@@ -62,6 +62,49 @@ router.get('/create-post', checkAuthenticated, (req, res) => {
   res.render('create-post', {id: req.user.id})
 })
 
+router.get('/home-dashboard/followers', async (req, res) => {
+  await User.findById(req.user.id).populate('followers').then((doc) =>{
+    res.render('followers', {userList: doc.followers, id: req.user.id})
+  }).catch((err) => {
+    if (err) {
+      res.status(500).json(err)
+    }
+  })
+  // var followers = User.findById(req.user.id).populate('followers').then((doc) =>{
+  //   return doc
+  // }).catch((err) => {
+  //   if (err) {
+  //     res.status(500).json(err)
+  //   }
+  // })
+
+  // res.render('followers', {followers: followers, id: req.user.id})
+})
+
+router.get('/following', (req, res) => {
+  var following = User.findById(req.user.id).populate('following').then((doc) =>{
+    return doc
+  }).catch((err) => {
+    if (err) {
+      res.status(500).json(err)
+    }
+  })
+
+  res.render('following', {following: following, id: req.user.id})
+})
+
+router.get('/home-dashboard/explore', async (req, res) => {
+  await User.find({_id: {$nin: req.user.following}}).then((lis) => {
+    // res.status(200).json(lis)
+    res.render('explore', {id: req.user.id, userList: lis})
+  }).catch((e) => res.status(500).json(e))
+  // User.find({_id: {$ne: req.user.id}}).then((lis) => {
+  //   // res.status(200).json(lis)
+  //   res.render('explore', {id: req.user.id, userList: lis})
+  // }).catch((e) => res.status(500).json(e))
+  // res.send(200).json(userList)
+})
+
 function checkAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
     return next()
