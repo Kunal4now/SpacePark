@@ -1,0 +1,46 @@
+.main {
+    display: flex;
+    justify-content: center;
+}
+
+.containers {
+    border-radius: 10px;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    vertical-align: middle;
+    width: 80%;
+    /* background-color: rgb(194, 190, 190); */
+}
+
+.list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-right: 100px;
+    margin-left: 100px;
+}
+
+.user img {
+    height: 60px;
+    width: 60px;
+    border-radius: 50px;
+}
+
+.user a {
+    margin-left: 25px;
+    text-decoration: none;
+    color: black;
+}
+
+.follow-btn {
+    margin-top: 10px;
+    background-color: #277da1;
+    border: none;
+    font-weight: normal;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+}
