@@ -2,10 +2,18 @@
 @import url('https://fonts.googleapis.com/css2?family=IM+Fell+Great+Primer&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@900&family=Martel+Sans:wght@900&display=swap');
 
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-weight: 700;
+    text-decoration: none;
+}
+
 #header {
     background-image: linear-gradient(30deg, #1E96B8, #2FB4C7);
     font-family: poppins, sans-serif;
-    height: fit-content;
+    height: 75px;
     width: 100%;
     padding: 20px;
     text-align: center;
@@ -13,6 +21,7 @@
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-evenly;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
 }
 
 #header #logo {
@@ -34,7 +43,9 @@
     text-decoration: none;
     text-align: center;
     color: white;
-    padding: 10px;
+    /* padding: 10px; */
+    padding: 27px;
+margin-top: -20px;
 }
 
 #header .nav-ul {
@@ -46,22 +57,41 @@
 }
 
 #header .nav-ul li a:hover {
-    color: #6de5cc;
+    /* color: #6de5cc; */
+    background-color: #1784A5;
 }
 .search-button:hover {
     color: #6de5cc;
 }
 
+/* #header #searchbar input {
+    text-align: center;
+    border: none;
+    border-radius: 10px;
+    width: 250px;
+    height: 30%;
+} */
+
 .search-term {
+    /* border: 1px solid white; */
     border:none;
     padding: 5px;
-    background-color: #1784A5;
-    border-radius: 25px;
+    background-color: #277da1;
+    border-radius: 2px;
     color: white;
     font-weight: normal;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
     font-size: small;
+    /* box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2); */
+    /* border: 3px solid #00B4CC;
+    border-right: none;
+    width: 200px;
+    padding: 15px;
+    height: 20px;
+    border-radius: 6px;
+    outline: none;
+    color: #9DBFAF; */
   }
 
   ::placeholder {
@@ -70,24 +100,39 @@
   }
 
 .search-button {
-    background-color: #1784A5;
+    background-color: #277da1;
     color: white;
     border: none;
     padding: 7px;
-    border-radius: 15px;
+    border-radius: 2px;
     width: 50px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+    /* box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2); */
+    /* width: 40px;
+    height: 36px;
+    border: none;
+    border-radius: 25px ; */
+    /* border: 1px solid #00B4CC; */
+    /* background: #00B4CC;
+    text-align: center;
+    color: #fff;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 20px; */
   }
 
   .create {
       color: white;
       /* border: 1px solid white; */
       border: none;
-      background-color: #1784A5;
+      background-color: #277da1;
       font-weight: normal;
       font-family: 'Segoe UI';
       font-size: small;
-      border-radius: 25px;
+      border-radius: 2px;
       padding: 6px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+      /* box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2); */
   }
 
   #searchbar > *:not(:last-child) {
@@ -95,6 +140,14 @@
       margin-top: 4px;
       margin-right: 10px;
   }
+
+/* #header #searchbar button {
+    background-color: white;
+    border: none;
+    width: 80px;
+    height: 30%;
+    border-radius: 10px;
+} */
 
 #header #searchbar input:active {
     border: none;
@@ -111,55 +164,3 @@
 .hamburger:focus {
     outline: none;
 }
-
-#header nav .icon {
-    display: none;
-}
-
-#header #logo .menu-btn i {
-    color: white;
-    cursor: pointer;
-    display: none;
-}
-
-@media screen and (max-width: 600px) {
-
-    #header {
-        width: 100%;
-        height: auto;
-        display: block;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        display: flex;
-        flex-direction: row;
-    }
-
-    #searchbar {
-        display: none;
-    }
-
-    #header .nav-ul  {
-        align-items: center;
-        display: none;
-        /* margin-left: -500px; */
-        flex-direction: column;
-        width: 100%;
-    }
-
-    #header .nav-ul.show {
-        display: flex;
-        width: 100%;
-    }
-
-    .hamburger {
-        display: block;
-    }
-
-    .main-container {
-        width: 100%;
-    }
-
-    .card {
-        margin: 5%;
-    }
-  }
