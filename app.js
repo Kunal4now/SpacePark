@@ -21,6 +21,7 @@ var authRoute = require('./routes/auth')
 var userRoute = require('./routes/users')
 var inedxRoute = require('./routes/index')
 var postRoute = require('./routes/posts');
+var followRoute = require('./routes/follow')
 const cookieParser = require('cookie-parser');
 
 const hostname = process.env.HOST;
@@ -55,6 +56,7 @@ app.use('/', authRoute)
 app.use('/', inedxRoute)
 app.use('/profile-new', userRoute)
 app.use('/posts', postRoute)
+app.use('/home-dashboard', followRoute)
 
 
 app.listen(port)
