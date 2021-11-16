@@ -1,61 +1,79 @@
 <html lang="en">
 <head>
-    <%- include('./partials/header.ejs') %>
-    <link rel="stylesheet" type="text/css" href="/stylesheets/home-guest.css">
-    <title>SpacePark</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/home-guest.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Document</title>
 </head>
-<body style="background-color: rgb(245, 243, 243);">
-    <!-- navbar -->  
-    <nav class="navbar navbar-expand-lg">
-        <div class="container-xxl">
-            <a href="#" class="navbar-brand">
-                <span class="fw-bold h3">SpacePark</span>
-            </a>
-            <% if (messages.error) { %>
-              <%= messages.error %>
-            <% } %>
-            <form class="form-inline navbar-form navbar-center my-2 my-auto" method="POST" action="/login">
-                <div class="input-group">
-                  <input type="email" class="form-control form-control-sm m-2 rounded" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" name="loginEmail" required>
-                  <input type="password" class="form-control form-control-sm m-2 rounded" placeholder="Password" aria-describedby="passwordHelpBlock" name = "loginPassword" required>
-                  <button id="login-btn" class="btn btn-outline-success m-2 rounded" type="submit">Log In</button>
-                </div>
-              </form>
+<body>
+    <div class="main">
+        <div id="stripes">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
-    </nav>
-    <%- include('./partials/alert.ejs') %>
-    <div class="container py-md-5">
-        <div class="row align-items-center">
-            <div class="col-lg-7 py-3 py-md-5">
-                <h1 class="display-3">Welcome to SpacePark</h1>      
-                <p class="lead text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus autem voluptates similique recusandae officiis dolorem dolores esse soluta. Deleniti delectus quis temporibus excepturi quia minus deserunt! Voluptatibus itaque obcaecati quidem.
-                </p>
-                <!-- <p class="lead text-muted">Are you sick of short tweets and impersonal “shared” posts that are reminiscent of the late 90’s email forwards? We believe getting back to actually writing is the key to enjoying the internet again.</p> -->
+        <!-- <nav>
+            <div id="logo">
+                <h3>
+                    <span style="color: #323641;">Space</span>
+                    <span style="color: white;">Park</span>
+                </h3>
+            </div> 
+        </nav> -->
+        <div id="header" class="head">
+            <div id="logo">
+                <h3>
+                    <span style="color: #323641;">Space</span>
+                    <span>Park</span>
+                </h3>
+            </div>  
+            <nav>
+                <button class="hamburger" id="hamburger">
+                    <i class="fas fa-bars fa-2x"></i>
+                </button>
+            </nav>
+            <form action="/login" method="POST">
+                <input type="email" placeholder="email" class="search-term" name="loginEmail" required>
+                <input type="password" placeholder="password" class="search-term" name="loginPassword" required>
+                <button type="submit" class="create">Log In</button>
+            </form>
+        </div>
+        <%- include('./partials/messg-alert.ejs') %>
+        <% if (messages.error) { %>
+          <div class="alert alert-danger    alert-dismissible fade show text-center" role="alert" style="position: fixed; width: 100%;">
+            <%= messages.error %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+          
+        <% } %>
+        <div class="decoration">
+            <!-- <img src="Chat.png" alt=""> -->
+            <div class="para">
+                <div class="para1">
+                    <h1>Because,</h1>
+                </div>
+                <div class="para2">
+                    <h1>We Love Social Media</h1>
+                </div>
             </div>
-            <div class="col-lg-5 pl-lg-5 pb-3 py-lg-5 px-lg-5">
-    
-                <form action="/register" method="POST" id="registration-form">
-                    <div class="form-group">
-                      <label for="username-register" class="text-muted mb-1"><small>Username</small></label>
-                      <input name="username" id="username-register" class="form-control" type="text" placeholder="Pick a username" autocomplete="off" required>
-                    </div>
-                    
-                    <div class="form-group">
-                      <label for="email-register" class="text-muted mb-1"><small>Email</small></label>
-                      <input name="email" id="email-register" class="form-control" type="email" placeholder="you@example.com" autocomplete="off" required>
-                    </div>
-                    
-                    <div class="form-group">
-                      <label for="password-register" class="text-muted mb-1"><small>Password</small></label>
-                      <input name="password" id="password-register" class="form-control" type="password" placeholder="Create a password" required>
-                    </div>
-               
-                    <input type="hidden" name="_csrf" value="IyOURRR7-wJAIkEzz5-bY1HZcKF9R7PkulLw">                  
-                    <button type="submit" class="py-3 mt-4 btn btn-lg btn-success btn-block" id="signup-button">Sign up for SpacePark</button>
-                  </form>
-            </div>
+        </div>
+        <div class="signup">
+            <form action="/register" method="POST">
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username-register" placeholder="Pick a username" class="signup-input">
+                <label for="mail">Email</label>
+                <input type="email" name="email" id="email-register" placeholder="email" class="signup-input">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password-register" placeholder="Create a Password" class="signup-input">
+                <button type="submit" class="signup-btn">Sign Up</button>
+            </form>
         </div>
     </div>
-    <%- include('./partials/footer.ejs') %>
 </body>
 </html>
