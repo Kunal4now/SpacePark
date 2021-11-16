@@ -37,13 +37,21 @@ router.post("/register", checkNotAuthenticated, async (req, res) => {
 
     if (req.body.password.length < 6) {
       errors.push({ msg: "Password should contain atleast 6 characters" });
+      req.session.message = {
+        type: 'danger',
+        message:'Password should contain atleast 6 characters!'
+      }
     }
 
     //problem: Email already registered was not shown in error list
     //Solution: findOne need to await for to get the work done so that
     await User.findOne({ email: req.body.email }).then((user) => {
       if (user) {
-        errors.push({ msg: "Email already registered" });
+        errors.push({ msg: "Email is already taken!" });
+        req.session.message = {
+          type: 'primary',
+          message:'Email is already taken!'
+        }
       }
     });
 
