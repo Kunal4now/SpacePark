@@ -44,16 +44,15 @@ router.post("/register", checkNotAuthenticated, async (req, res) => {
     await User.findOne({ email: req.body.email }).then((user) => {
       if (user) {
         errors.push({ msg: "Email already registered" });
-        console.log(errors);
       }
     });
-    console.log(errors);
+
     if (errors.length > 0) {
       res.render("home-guest", { errors });
     } else {
       user
         .save()
-        .then((result) => res.send(result))
+        .then((result) => res.render('home-guest'))
         .catch((err) => console.log(err));
     }
   } catch (e) {
