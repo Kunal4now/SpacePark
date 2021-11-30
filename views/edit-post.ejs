@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <%- include('./partials/header.ejs') %>
+    <link rel="stylesheet" href="/stylesheets/home-dashboard.css">
+    <link rel="stylesheet" href="/stylesheets/create-post.css">
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="/javascripts/TinyMCE.js"></script>
+    <title>Create Post</title>
+</head>
+<body>
+    <%- include('./partials/nav.ejs') %>
+    <div class="container">
+        <form action="/posts/update/<%= post.id %>?_method=PUT" method="POST">
+            <label for="title">
+                <small>Title</small>
+            </label>
+            <input type="text" value="<%= post.title %> " class="title" name="title">
+            <label for="description">
+                <small>Description</small>
+            </label>
+            <input type="text" value="<%= post.description %> " class="description" name="description">
+            <label for="editor-container">
+                <small>Snippet</small>
+            </label>
+            <textarea type="text" class="snippet" id="mytextarea" name="snippet"><%= post.snippet %></textarea>
+            <button class="publish" type="submit">Update</button>
+        </form>
+    </div>
+    <%- include('./partials/footer.ejs') %>
+</body>
+</html>

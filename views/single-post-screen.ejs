@@ -7,32 +7,6 @@
 </head>
 <body>
     <%- include('./partials/nav.ejs') %> 
-    <!-- <div id="header" class="head">
-        <div id="logo">
-            <h3>
-                <span style="color: #323641;">Space</span>
-                <span>Park</span>
-            </h3>
-        </div>  
-        <nav>
-            <button class="hamburger" id="hamburger">
-                <i class="fas fa-bars fa-2x"></i>
-            </button>
-        </nav>
-        <ul class="nav-ul" id="nav-ul">
-            <li><a href="/home-dashboard">HOME</a></li>
-            <li><a href="#">TIMELINE</a></li>
-            <li><a href="#">FOLLOWERS</a></li>
-            <li><a href="#">FOLLOWING</a></li>
-            <li><a href="/create-post">CREATE POST</a></li>
-        </ul>
-        <div id="searchbar" class="wrap">
-            <input type="text" placeholder="What are you looking for?" class="search-term">
-            <button type="button" class="search-button">
-                <i class="fa fa-search"></i>
-            </button>
-        </div>
-    </div> -->
     <%- include('./partials/messg-alert.ejs') %> 
     <div class="main-container">
         <div class="main">
@@ -45,18 +19,14 @@
                     <span><%= post.author.username %> </span> 
                     <div class="createdOn text-muted"><%= post.createdAt.toDateString() %></div>
                 </div>
-                <div class="edit-button">
-                    <div class="btn-group">
-                        <button class="edit-btn">Edit</button>
-                        <!-- <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#reg-modal">
-                            Edit
-                          </button> -->
-                        <!-- <a href="" class="btn btn-sm btn-warning">Edit</a> -->
-                        <button class="delete-btn" data-bs-toggle="modal" data-bs-target="#reg-modal">Delete</button>
-                        <!-- <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#reg-modal"">Delete</button> -->
-                        
+                <% if (post.author.id === authorID) { %>
+                    <div class="edit-button">
+                        <div class="btn-group">
+                            <a class="edit-btn" href="/posts/update/<%= post.id %>">Edit</a>
+                            <button class="delete-btn" data-bs-toggle="modal" data-bs-target="#reg-modal">Delete</button> 
+                        </div>
                     </div>
-                </div>
+                <% } %> 
             </div>
             <div class="description">
                 <p><%= post.description %> </p>

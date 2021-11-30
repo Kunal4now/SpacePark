@@ -36,18 +36,24 @@ router.post("/register", checkNotAuthenticated, async (req, res) => {
     });
 
     if (req.body.password.length < 6) {
-      errors.push({ msg: "Password should contain atleast 6 characters" });
+      errors.push({ msg: "Password should contain atleast 6 characters", type: "danger"});
       req.session.message = {
         type: 'danger',
         message:'Password should contain atleast 6 characters!'
       }
     }
 
+    await User.find({username: req.body.usermame}).then((user) => {
+      if (user.username === req.body.username) {
+        errors.push({ msg: "Username is already taken!", type: "danger"});
+      }
+    });
+
     //problem: Email already registered was not shown in error list
     //Solution: findOne need to await for to get the work done so that
     await User.findOne({ email: req.body.email }).then((user) => {
       if (user) {
-        errors.push({ msg: "Email is already taken!" });
+        errors.push({ msg: "Email is already taken!", type: "danger" });
         req.session.message = {
           type: 'primary',
           message:'Email is already taken!'
@@ -58,9 +64,10 @@ router.post("/register", checkNotAuthenticated, async (req, res) => {
     if (errors.length > 0) {
       res.render("home-guest", { errors });
     } else {
+      errors.push({msg: "Sucessfully registered!", type: "success"});
       user
         .save()
-        .then((result) => res.render('home-guest'))
+        .then((result) => res.render('home-guest', {errors}))
         .catch((err) => console.log(err));
     }
   } catch (e) {

@@ -45,12 +45,17 @@
             </form>
         </div>
         <%- include('./partials/messg-alert.ejs') %>
+        <% if (typeof(errors) != "undefined") { %>
+            <div class="alert alert-<%= errors[0].type %>     alert-dismissible fade show text-center" role="alert" style="position: fixed; width: 100%;">
+                <%= errors[0].msg %>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <% } %>
         <% if (messages.error) { %>
-          <div class="alert alert-danger    alert-dismissible fade show text-center" role="alert" style="position: fixed; width: 100%;">
-            <%= messages.error %>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-          
+            <div class="alert alert-danger    alert-dismissible fade show text-center" role="alert" style="position: fixed; width: 100%;">
+                <%= messages.error %>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
         <% } %>
         <div class="decoration">
             <!-- <img src="Chat.png" alt=""> -->

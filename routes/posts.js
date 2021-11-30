@@ -39,7 +39,7 @@ router.get('/find', async (req, res) => {
 router.get('/:id', async (req, res) => {
     try {
         Post.findById(req.params.id).populate('author').exec().then(doc => {
-            res.render('single-post-screen', {post: doc, id: req.params.id})
+            res.render('single-post-screen', {post: doc, id: req.params.id, authorID: req.user.id})
         }).catch((err) => {
             res.render('sigle-post-screen')
         })
@@ -48,14 +48,32 @@ router.get('/:id', async (req, res) => {
     }
 })
 
-router.put('/update/:id', async(req, res) => {
-    if (req.user.id === req.params.id) {
-        const updatedPost = Post.findByIdAndUpdate(req.params.id, {
-            $set: req.body
-        },{new: true});
-        res.status(200).json(updatedPost)
-    } else {
-        res.status(500).json("You can only edit posts that you have authored")
+// router.put('/update/:id', async(req, res) => {
+//     if (req.user.id === req.params.id) {
+//         const updatedPost = Post.findByIdAndUpdate(req.params.id, {
+//             $set: req.body
+//         },{new: true});
+//         res.status(200).json(updatedPost)
+//     } else {
+//         res.status(500).json("You can only edit posts that you have authored")
+//     }
+// })
+
+router.get('/update/:id', (req, res) => {
+    Post.findById(req.params.id).then((post) => {
+        res.render('edit-post', {id: req.user.id, post: post})
+    })
+})
+
+router.put('/update/:id', async (req, res) => {
+    try {
+        await Post.findByIdAndUpdate(req.params.id, {
+            $set: {"title": req.body.title, "description": req.body.description, "snippet": req.body.snippet}
+        }, {new: true}).exec().then(
+            res.redirect(`/posts/${req.params.id}`)
+        )
+    } catch(e) {
+        res.status(500).json(e);
     }
 })
 
