@@ -1,28 +1,20 @@
 require('dotenv').config()
 var express = require('express');
 const morgan = require('morgan');
-var path = require('path');
 var app = express();
-const db = require('./db')
 const initializePassport = require('./passport-config')
 const passport = require('passport')
 const flash = require('express-flash')
-var session = require('express-session')
+const session = require('./middleware/session')
 const methodOverride = require('method-override')
 
-app.use(session({
-  secret: process.env.SESSION_SECRET,
-  resave: false,
-  cookie: { path: '/', httpOnly: true, maxAge: 365 * 60 * 60 * 1000}, 
-  saveUninitialized: false
-}))
+app.use(session)
 
 var authRoute = require('./routes/auth')
 var userRoute = require('./routes/users')
 var inedxRoute = require('./routes/index')
 var postRoute = require('./routes/posts');
 var followRoute = require('./routes/follow')
-const cookieParser = require('cookie-parser');
 
 const hostname = process.env.HOST;
 const port = process.env.PORT;
