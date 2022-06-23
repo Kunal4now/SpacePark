@@ -18,23 +18,28 @@ router.get('/404', (req, res) => {
 
 router.get('/home-dashboard', checkAuthenticated, async (req, res) => {
   try {
-    const profileUser = await User.findById(req.user.id).then((names) => {
-      return names
-    }).catch((err) => console.log(err))
-    var img = profileUser.profilePicture.data
-    if (typeof img == 'undefined') {
-      img = fs.readFileSync('public/default/default_profile_pic.png').toString('base64');
-    } else {
-      img = img.toString('base64')
-    }
-    Post.find({}).populate('author').sort({createdAt: 'desc'}).then((doc) => {
-      res.render('home-dashboard', {blogs: doc, id: req.user.id})
-    }).catch((err) => {
-      console.log(err)
-      res.status(500).json(err)
+    let following = await User.findOne({_id: req.user.id}).select('following')
+    following = following.following
+    following.push(req.user.id)
+
+    let posts = await Post.find().populate('author').sort({createdAt: 'desc'})
+
+    let followingPosts = []
+
+    following.forEach((user) => {
+      posts.forEach((post) => {
+        if (user.equals(post.author._id)) {
+          followingPosts.push(post)
+        }
+      })
     })
+
+    followingPosts.sort((a, b) => Date.parse(b.updatedAt) - Date.parse(a.updatedAt))
+
+    res.render('home-dashboard', {blogs: followingPosts, id: req.user.id})
   } catch(err) {
-    res.status(500).json("Error")
+    console.log(err)
+    res.status(500).json(err)
   }
 })
 
