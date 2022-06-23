@@ -29,6 +29,7 @@
     "multer": "^1.4.3",
     "passport": "^0.5.0",
     "passport-local": "^1.0.0",
+    "redis": "^4.1.0",
     "sass": "^1.42.1",
     "socket.io": "^4.2.0",
     "string-strip-html": "^9.0.2"
