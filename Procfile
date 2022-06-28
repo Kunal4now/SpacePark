@@ -1,1 +1,1 @@
-web: 'redis-server && node app.js'
+web: node app.js'
