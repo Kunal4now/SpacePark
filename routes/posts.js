@@ -1,6 +1,6 @@
-var express = require('express');
+const express = require('express');
 const { findById } = require('../models/Post');
-var router = express.Router();
+const router = express.Router();
 const Post = require('../models/Post')
 
 router.post('/create', async (req, res) => {

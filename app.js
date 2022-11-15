@@ -1,7 +1,7 @@
 require('dotenv').config()
-var express = require('express');
+const express = require('express');
 const morgan = require('morgan');
-var app = express();
+const app = express();
 const initializePassport = require('./passport-config')
 const passport = require('passport')
 const flash = require('express-flash')
@@ -10,11 +10,11 @@ const methodOverride = require('method-override')
 
 app.use(session)
 
-var authRoute = require('./routes/auth')
-var userRoute = require('./routes/users')
-var inedxRoute = require('./routes/index')
-var postRoute = require('./routes/posts');
-var followRoute = require('./routes/follow')
+const authRoute = require('./routes/auth')
+const userRoute = require('./routes/users')
+const inedxRoute = require('./routes/index')
+const postRoute = require('./routes/posts');
+const followRoute = require('./routes/follow')
 
 const hostname = process.env.HOST;
 const port = process.env.PORT;
@@ -50,6 +50,11 @@ app.use('/profile-new', userRoute)
 app.use('/posts', postRoute)
 app.use('/home-dashboard', followRoute)
 
+app.get("*", (req, res) => {
+  res.render('404')
+})
 
-app.listen(port)
-    console.log(`listening on port http://${hostname}:${port}/`)
+
+app.listen(port, () => {
+  console.log(`listening on port http://${hostname}:${port}/`)
+})

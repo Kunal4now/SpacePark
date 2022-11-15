@@ -1,14 +1,12 @@
-var express = require("express");
+const express = require("express");
 const bcrypt = require("bcryptjs");
-var User = require("../models/User");
+const User = require("../models/User");
 const fs = require('fs')
 const passport = require("passport");
 
 const router = express.Router();
 
-router.post(
-  "/login",
-  checkNotAuthenticated,
+router.post("/login", checkNotAuthenticated,
   passport.authenticate("local", {
     successRedirect: "/home-dashboard",
     failureRedirect: "/",

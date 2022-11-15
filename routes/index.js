@@ -1,19 +1,11 @@
-var express = require('express');
+const express = require('express');
 const Post = require('../models/Post');
 const User = require('../models/User');
 const fs = require('fs');
-var router = express.Router();
+const router = express.Router();
 
 router.get('/', checkNotAuthenticated, (req, res) =>{
   res.render('home-guest')
-})
-
-router.get('/profile', checkAuthenticated ,(req, res) => {
-  res.render('profile')
-})
-
-router.get('/404', (req, res) => {
-  res.render('404')
 })
 
 router.get('/home-dashboard', checkAuthenticated, async (req, res) => {
